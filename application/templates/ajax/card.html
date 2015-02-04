@@ -1,0 +1,51 @@
+{% for place in context.places %}<div class="card panel panel-default" data-place-id="{{ place.id }}">
+<div class="image-area-wrap">
+    <div class="image-area" style="background-image:url('{{ place.thumbnail_url }}');">
+        <img src="{{ place.thumbnail_url }}" alt="{{ place.name }}">
+        <div data-toggle="modal" data-target="#modal-place-detail">
+
+            <div class="description">
+                <div class="small">{{ place.sub_area.parent.name }} | {{ place.content_type.name }}</div>   
+                <h4>{{ place.name }}</h4>
+                <!-- <div>중화인민공화국 산둥 성의 부성급시</div> -->
+                <div class="rating">
+                    {{ place.get_rate_html()|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% set best_comment = place.get_best_comment() %}
+{% if best_comment %}
+<div class="panel-body best-comment">
+    <span class="username small">{{ best_comment.user.name }}</span></span>
+
+    <h5 class="text-center">"{{ best_comment.body }}"</h5>
+</div>
+{% else %}
+<div class="panel-body best-comment no-comment">
+    <h5 class="text-center">아직 한줄평이 없어요</h5>
+</div>
+{% endif %}
+
+
+<form class="panel-body comment-form">
+    <div class="input-group">
+      <input type="text" name="input-comment-body" class="form-control input-sm" placeholder="한줄평을 남겨주세요" required>
+      <span class="input-group-btn">
+        <button class="btn btn-default btn-sm" type="submit"><span class="glyphicon glyphicon-pencil"></span></button>
+    </span>
+</div>
+</form>
+
+
+
+{% if context.user %}
+{{ place.get_rate_area_html(context.user.id)|safe }}
+{% else %}
+{{ place.get_rate_area_html()|safe }}
+{% endif %}
+
+
+
+</div>{% endfor %}

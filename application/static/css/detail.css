@@ -1,0 +1,71 @@
+#modal-place-detail .rate {
+    color: #FFC400;
+}
+
+#modal-place-detail .modal-body {
+    padding-top: 0px;
+}
+
+#modal-place-detail .username {
+    color: #3F51B5;
+}
+
+
+#modal-place-detail .best-comment-info {
+    margin-top: 15px;
+}
+
+#modal-place-detail .best-comment {
+    margin-top: 5px;
+}
+
+
+#modal-place-detail .btn-like {
+    color: #777;
+    transition: color .2s linear;
+}
+
+#modal-place-detail .btn-like:hover, #modal-place-detail .btn-like.liked {
+    color: #F50057;
+    text-decoration: none;
+}
+
+
+#modal-map {
+    width: 100%;
+    height: 300px;
+    background-color :#ccc;
+}
+
+#modal-place-detail .image-area {
+    min-height: 150px;
+}
+
+#modal-place-detail .carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    width: 100%;
+    min-height: 200px;
+}
+
+
+
+#modal-upload-image #label-fileupload {
+    margin-top: 20px;
+}
+
+#modal-upload-image #fileupload {
+    display:none;
+}
+#progress {
+    margin: 20px 0px;
+    height: 6px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 2px 4px;
+    background-color: #3F51B5;
+}
+
+#progress .bar {
+    background-color: #FF80AB;
+    height: 2px;
+    width: 0%;
+}

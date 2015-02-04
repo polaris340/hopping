@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/card.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/detail.css') }}">
+
+<script src="{{ url_for('static',filename='js/lib/mustache.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/rest.js') }}"></script>
+
+
+
+<script src="{{ url_for('static', filename='js/lib/jquery.ui.widget.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/jquery.iframe-transport.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lib/jquery.fileupload.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/card.js') }}"></script>
+<script src="{{ url_for('static', filename='js/detail.js') }}"></script>
+<script src="{{ url_for('static', filename='js/comment.js') }}"></script>
+<script src="{{ url_for('static', filename='js/class/place.js') }}"></script>
+<script src="{{ url_for('static', filename='js/class/place_manager.js') }}"></script>
+{% endblock %}
+
+
+
+  {% block body %}
+
+  <div class="container">
+    <div class="col-sm-4 col-md-3 column"></div>
+
+
+    <div class="col-sm-4 col-md-3 column hidden-xs"></div>
+    <div class="col-sm-4 col-md-3 column hidden-xs"></div>
+    <div class="col-sm-4 col-md-3 column hidden-xs hidden-sm"></div>
+  </div>
+
+  <div id="loader" class="text-center">
+    <img id="img-loading" src="{{ url_for('static',filename='res/img/loading.gif') }}" alt="loading" width="50" height="50">
+    <button type="button" id="btn-load-more" class="btn btn-link btn-block" style="display:none;">더 평가하기</button>
+  </div>
+
+
+
+
+
+  <!-- detail view modal -->
+  <div class="modal" id="modal-place-detail" tabindex="-1" role="dialog" aria-labelledby="placeDetailLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div style="line-height:200px;" class="modal-loading text-center"><img src="{{ url_for('static', filename='res/img/loading.gif') }}" alt="loading" width="50" height="50"></div>
+    </div>
+  </div>
+  {% endblock %}
+
+
+

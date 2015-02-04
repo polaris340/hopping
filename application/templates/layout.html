@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HOPP</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/navbar.css') }}">
+    
+    
+    <script src="{{ url_for('static',filename='js/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/lib/toast.js') }}"></script>
+    
+    <script src="{{ url_for('static',filename='js/common.js') }}"></script>
+    
+
+
+    {% endblock %}
+</head>
+<body>
+
+    {% block navbar %}
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-main">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ url_for('index') }}">HOPP</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    {% set current = request.url.split('/')[-1] %}
+    <div class="collapse navbar-collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li class="{{ 'active' if current == 'index' or current=='' }}"><a href="{{ url_for('index') }}">평가하기</a></li>
+        {% if 'user_id' in session %}
+        <li class="{{ 'active' if current == 'mypage' }}"><a href="{{ url_for('mypage') }}">내 평가 결과</a></li>
+        <li><a href="{{ url_for('logout') }}">로그아웃</a></li>
+        {% else %}
+        <li><a href="{{ url_for('facebook_login') }}"><i class="fa fa-facebook-square"></i>&nbsp;로그인</a></li>
+        
+        {% endif %}
+        
+    </ul>
+
+
+    <form class="navbar-form navbar-left form-search" role="search">
+      <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+            <input type="text" id="input-search-keyword" class="form-control" placeholder="키워드 입력">
+        </div>
+    </div>
+</form>
+
+{% if 'user_id' not in session %}
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="{{ 'active' if current == 'login' }}"><a href="{{ url_for('login') }}">HOPP 계정으로 로그인</a></li>
+        <li class="{{ 'active' if current == 'signup' }}"><a href="{{ url_for('signup') }}">가입하기</a></li>
+    </ul>
+</li>
+</ul>
+{% endif %}
+
+
+
+</div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <div class="col-sm-4 col-md-3 column"></div>
+    <div class="col-sm-4 col-md-3 column">
+        <div class="card panel panel-default">
+            <div class="image-area">
+                <img src="https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xfa1/t31.0-8/1078938_10201552808284992_1052775318_o.jpg" alt="">
+                <div>
+
+                    <div class="description">
+                        <h3>칭다오</h3>
+                        <div>중화인민공화국 산둥 성의 부성급시</div>
+                        <div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span> 4.3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="pull-right hover-menu"><span class="comment-like small glyphicon glyphicon-heart liked">12</span></div>
+                <span class="username small">Jiho Hong</span>&nbsp;<span class="comment-time small hover-menu">52분 전</span>&nbsp;<span class="small hover-menu"><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span></span>
+
+                <h5 class="text-center">"싸고 맛있는 음식이 정말 많아요"</h5>
+            </div>
+            <div class="panel-footer text-center rate-area">
+                <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+            </div>
+            <ul class="list-group comment-list">
+                <li class="list-group-item">
+                    <div class="input-group">
+                      <input type="text" class="form-control input-sm" placeholder="댓글 입력">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default btn-sm" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+                    </span>
+                </div>
+            </li>
+            <li class="comment small list-group-item"><div class="pull-right">&nbsp;&nbsp;<span class="comment-like glyphicon glyphicon-heart">11</span></div><span class="username">윤디킴</span>&nbsp;<span class="comment-time small">2시간 전</span>&nbsp;<span class="small"><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span></span><br><span class="comment-text">날씨가 너무 좋아요!</span></li>
+
+            <li class="comment small list-group-item"><div class="pull-right"><span class="comment-like glyphicon glyphicon-heart">10</span></div><span class="username">Jack Yoon</span>&nbsp;<span class="comment-time small">30분 전</span>&nbsp;<span class="small"><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span></span><br><span class="comment-text">아침마다 스모그가 너무 심해요</span></li>
+
+            <li class="comment small list-group-item"><div class="pull-right"><span class="comment-like glyphicon glyphicon-heart liked">1</span></div><span class="username">Jinuk Jang</span>&nbsp;<span class="comment-time small">1시간 전</span>&nbsp;<span class="small"><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span></span><br><span class="comment-text auto">괜찮아요!</span></li>
+            <li class="list-group-item small btn-load-more">
+                <a href="#" class=" text-center">
+                    <span class="circle"></span><span class="circle"></span><span class="circle"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card panel panel-default">
+        <div class="image-area">
+            <img src="https://scontent-b.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/423080_3418906234347_1399998201_n.jpg?oh=83dede8e19bd5c69e9c6632ce9beaf15&oe=54B9908A" alt="">
+            <div>
+
+                <div class="description">
+                    <h3>안동</h3>
+                    <div>경상북도 중북부에 있는 시</div>
+                    <div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span> 4.0</div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="pull-right hover-menu"><span class="comment-like small glyphicon glyphicon-heart liked">12</span></div>
+            <span class="username small">Jiho Hong</span>&nbsp;<span class="comment-time small hover-menu">52분 전</span>&nbsp;<span class="small hover-menu"><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span></span>
+
+            <h5 class="text-center">"싸고 맛있는 음식이 정말 많아요"</h5>
+        </div>
+        <div class="panel-footer text-center rate-area">
+            <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+        </div>
+        <ul class="list-group comment-list">
+            <li class="list-group-item">
+                <div class="input-group">
+                  <input type="text" class="form-control input-sm" placeholder="댓글 입력">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default btn-sm" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+                </span>
+            </div>
+        </li>
+        <li class="comment small list-group-item"><div class="pull-right">&nbsp;&nbsp;<span class="comment-like glyphicon glyphicon-heart">11</span></div><span class="username">윤디킴</span>&nbsp;<span class="comment-time small">2시간 전</span>&nbsp;<span class="small"><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span></span><br><span class="comment-text">날씨가 너무 좋아요!</span></li>
+
+        <li class="comment small list-group-item"><div class="pull-right"><span class="comment-like glyphicon glyphicon-heart">10</span></div><span class="username">Jack Yoon</span>&nbsp;<span class="comment-time small">30분 전</span>&nbsp;<span class="small"><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span></span><br><span class="comment-text">아침마다 스모그가 너무 심해요</span></li>
+
+        <li class="comment small list-group-item"><div class="pull-right"><span class="comment-like glyphicon glyphicon-heart liked">1</span></div><span class="username">Jinuk Jang</span>&nbsp;<span class="comment-time small">1시간 전</span>&nbsp;<span class="small"><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span></span><br><span class="comment-text auto">괜찮아요!</span></li>
+        <li class="list-group-item small btn-load-more">
+            <a href="#" class=" text-center">
+                <span class="circle"></span><span class="circle"></span><span class="circle"></span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+</div>
+<div class="col-sm-4 col-md-3 column">
+    <div class="card panel panel-default">
+        <div class="image-area">
+            <img src="https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-ash2/v/t1.0-9/999909_574672445940003_45329792_n.jpg?oh=c67d2fb8db2d2f0a77f21d991fe709b3&oe=54BACFD6&__gda__=1420835432_223f873c839d96b7a9c02b8411c522f1" alt="">
+            <div>
+
+                <div class="description">
+                    <h3>파주</h3>
+                    <div>경기도의 서북부에 있는 시</div>
+                    <div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span> 5.0</div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="pull-right hover-menu"><span class="comment-like small glyphicon glyphicon-heart liked">12</span></div>
+            <span class="username small">Jiho Hong</span>&nbsp;<span class="comment-time small hover-menu">52분 전</span>&nbsp;<span class="small hover-menu"><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span></span>
+
+            <h5 class="text-center">"싸고 맛있는 음식이 정말 많아요"</h5>
+        </div>
+        <div class="panel-footer text-center rate-area">
+            <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+        </div>
+        <ul class="list-group comment-list">
+            <li class="list-group-item">
+                <div class="input-group">
+                  <input type="text" class="form-control input-sm" placeholder="댓글 입력">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default btn-sm" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+                </span>
+            </div>
+        </li>
+        <li class="comment small list-group-item"><div class="pull-right">&nbsp;&nbsp;<span class="comment-like glyphicon glyphicon-heart">11</span></div><span class="username">윤디킴</span>&nbsp;<span class="comment-time small">2시간 전</span>&nbsp;<span class="small"><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span></span><br><span class="comment-text">날씨가 너무 좋아요!</span></li>
+
+        <li class="comment small list-group-item"><div class="pull-right"><span class="comment-like glyphicon glyphicon-heart">10</span></div><span class="username">Jack Yoon</span>&nbsp;<span class="comment-time small">30분 전</span>&nbsp;<span class="small"><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span></span><br><span class="comment-text">아침마다 스모그가 너무 심해요</span></li>
+
+        <li class="comment small list-group-item"><div class="pull-right"><span class="comment-like glyphicon glyphicon-heart liked">1</span></div><span class="username">Jinuk Jang</span>&nbsp;<span class="comment-time small">1시간 전</span>&nbsp;<span class="small"><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span><span class="glyphicon glyphicon-star comment-rating"></span></span><br><span class="comment-text auto">괜찮아요!</span></li>
+        <li class="list-group-item small btn-load-more">
+            <a href="#" class=" text-center">
+                <span class="circle"></span><span class="circle"></span><span class="circle"></span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+</div>
+<div class="col-sm-4 col-md-3 column"></div>
+</div>
+{% endblock %}
+</body>
+</html>

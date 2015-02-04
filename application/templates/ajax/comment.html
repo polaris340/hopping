@@ -1,0 +1,9 @@
+{% for comment in context.comments %}<li class="list-group-item">{% if context.user and context.user.id == comment.user_id %}<button class="btn btn-delete-comment btn-sm btn-link pull-right"  data-target-comment-id="{{ comment.id }}"><span class="fa fa-times"></span></button>{% 
+endif %}
+  <span class="username">{{ comment.user.name }}</span>&nbsp;&nbsp;&nbsp;<span class="rate">{{ comment.place.get_rate_html(comment.user_id, False)|safe }}</span><button class="btn btn-like btn-sm btn-link {{ 'liked' if context.user and comment.is_liked_by(context.user.id) }}" data-target-comment-id="{{ comment.id }}"><span class="glyphicon glyphicon-heart"></span>&nbsp;<span class="count">{{ comment.like_count }}</span></button>
+
+  <p>{{ comment.body }}</p>
+
+</li>{% endfor %}{% if context.comments.count() > 0 %}
+          <li class="list-group-item"><a href="#" class="btn btn-link btn-block btn-xs btn-load-comments" data-offset="{{ context.offset + context.comments.count() }}">더 보기</a></li>{% else %}<li class="list-group-item"><a href="#" class="btn btn-link btn-block btn-xs disabled">더이상 한줄평이 없어요</a></li>
+          {% endif %}

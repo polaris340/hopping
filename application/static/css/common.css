@@ -1,0 +1,41 @@
+body {
+    background-color: #CFD8DC;
+    overflow-y: scroll;
+}
+
+* {
+    border-radius: 0px !important;
+}
+
+#loader {
+    clear:both;
+    padding: 20px;
+    line-height:50px;   
+}
+
+.fallback {
+    color: #777;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    color: white;
+    background-color: #404EA5;
+}
+
+.btn-white {
+    color: white;
+    background-color: rgba(0,0,0,0.3);
+    border-color: white;
+    transition: color .2s linear, background-color .2s linear;
+}
+
+.btn-white:hover,
+.btn-like-image.liked {
+    color: #555;
+    background-color: white;
+}
+
+.btn-like-image.liked:hover {
+    cursor: default;
+
+}

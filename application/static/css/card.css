@@ -1,0 +1,211 @@
+
+.card {
+    border-radius: 5px !important;
+    overflow:hidden;
+    margin-bottom: 30px;
+}
+
+.card .image-area-wrap {
+    overflow: hidden;
+    
+}
+
+.card .image-area {
+    position: relative;
+    transition: .2s ease;
+}
+
+.card .image-area:hover {
+    -ms-transform: scale(1.1, 1.1);
+    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+}
+
+.card .hover-menu {
+    opacity: 0;
+    transition: opacity .2s linear;
+}
+
+.card:hover .hover-menu {
+    opacity: 1;
+}
+
+
+.card .image-area {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card .image-area>img {
+    width: 100%;
+    visibility: hidden;
+}
+
+/*.card .image-area {
+
+    background-image: url('https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xfa1/t31.0-8/1078938_10201552808284992_1052775318_o.jpg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+*/
+.card .image-area>div {
+    cursor:pointer;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    
+    transition: opacity .2s linear;
+}
+
+.card .image-area:hover>div {
+    opacity: 0;
+}
+
+.card .image-area .description {
+    position: absolute;
+    margin: 10px;
+    bottom: 0px;
+}
+
+.card .image-area .description .rating {
+    font-size: 1.1em;
+}
+
+.card .username {
+    color: #3F51B5;
+
+}
+
+
+
+.card :not(.no-comment) h5 {
+    margin-top:0px;
+}
+
+.card .no-comment {
+    color: #777;
+}
+
+
+.card .comment-form {
+    border-top: 1px solid #DDDDDD;
+    padding-top: 5px;
+}
+
+.card .comment-form .input-group {
+    border-bottom: 1px solid #FF80AB;
+}
+
+.card .comment-form .form-control,
+.card .comment-form .form-control:focus,
+.card .comment-form .btn-default,
+.card .comment-form .btn-default:focus,
+.card .comment-form .btn-default:active,
+.card .comment-form .btn-default:hover {
+    border: none;
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.card .comment-form .btn-default {
+    transition: color .2s linear;
+}
+
+.card .comment-form .btn-default:hover {
+    color: #FF80AB;
+}
+
+
+.card .rate-area {
+    color: #ccc;
+}
+
+.card .rate-area span {
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1.4em;
+    transition: color .2s linear;
+}
+
+
+.card .rate-area.disabled span {
+    opacity: .7;
+}
+
+.card .rate-area .active,
+.card .rate-area .rated {
+    color: #FFC400;
+}
+
+.card .comment-rating {
+    color: #FFC400;
+}
+
+.card .comment-time {
+    color: #777;
+}
+
+.card .comment-like {
+    cursor:pointer;
+    color: #aaa;
+    transition: color .2s linear;
+}
+
+.card .comment-like:hover, .card .comment-like.liked {
+    color: #F50057;
+}
+
+.card .comment-text.auto {
+    color:#777;
+}
+
+.card .comment-list {
+    overflow:hidden;
+    max-height: 0px;
+    transition: max-height .7s ease;
+}
+
+.card:hover .comment-list {
+    max-height: 300px;
+}
+
+.card .btn-load-more {
+    cursor: pointer;
+    background-color: #eee;
+    padding: 5px;
+    transition: background-color .2s linear;
+}
+
+.card .btn-load-more a {
+    display: block;
+}
+
+.card .btn-load-more:hover {
+    background-color: #ddd;
+}
+
+.card .btn-load-more .circle{
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0px 5px;
+    border-radius: 3px !important;
+    background-color:#777;
+
+}
+
+.card .rate-area {
+    padding: 2px;
+    font-size:1.4em;
+}

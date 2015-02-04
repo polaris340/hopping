@@ -1,0 +1,72 @@
+ body {
+    padding-top: 80px;
+ }
+
+.navbar-default {
+    background-color: #3F51B5;    
+    border-color: #303F9F;
+    opacity: .9;
+
+}
+
+.navbar-default .form-search .input-group .input-group-addon  {
+    
+    background-color: #3949AB;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #FF80AB;
+    color: #FF80AB;
+}
+
+.navbar-default .form-search .input-group input  {
+    
+    background: none;
+    border: none;
+    box-shadow:  none;
+    outline: 0;
+    color: white;   
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #FF80AB;
+    
+}
+
+.navbar-default .form-search .input-group inputfocus {
+    box-shadow: none;
+    border-color: #FF80AB;
+
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #f0f0f0;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus{
+    color: #FF80AB;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: white;
+    background-color: #303F9F;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: white;
+}
+
+.navbar-default .navbar-toggle {
+    border-color:#303F9F;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color:#303F9F;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #3F51B5;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #303F9F;
+}

@@ -1,0 +1,59 @@
+.navbar-default {
+    border-color: #3F51B5;
+}
+
+body {
+    color: white;
+    background-color: #3F51B5;
+}
+
+.jumbotron {
+    background-color: #3F51B5;
+}
+
+label {
+    color: #FF80AB;
+}
+
+.form-control {
+    background: none;
+    border: none;
+    box-shadow:  none;
+    outline: 0;
+    color: white;   
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #FF80AB;
+    padding: 0px;
+    font-size: 1.5em;
+
+}
+
+.form-control.error,
+.form-control.error:focus {
+    border-color: #F50057;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #FF80AB;
+
+}
+
+h3 {
+    margin: 50px 0px;
+
+}
+
+.btn-link {
+    color: white;
+}
+
+.btn-link:hover, .btn-link:focus, .btn-link:active {
+    background-color: white;
+    text-decoration: none;
+}
+
+.navbar-form {
+    display: none;
+}
